@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 17:37:25 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/14 15:04:37 by mez-zahi         ###   ########.fr       */
+/*   Created: 2024/11/13 17:37:35 by mez-zahi          #+#    #+#             */
+/*   Updated: 2024/11/14 18:40:12 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LIGNE_H
-#define GET_NEXT_LIGNE_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-// #define BUF_SIZE 0
-#define BUF_SIZE 5
+#include 
 
 size_t	ft_strlen(const char *str)
 {
@@ -78,4 +70,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (( char *)s);
 }
-#endif
