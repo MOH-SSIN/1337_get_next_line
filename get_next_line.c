@@ -17,26 +17,26 @@ char *ft_cut_reste(char *str)
 {
     char    *result;
     int     i;
-    int     len;
+    int     j;
 
     i = 0;
+    j = 0;
     while (str[i] && str[i] != '\n')
         i++;
-    if (str[i] == '\0')//Objectif : Cette condition vérifie si str est arrivé à la fin ('\0') sans rencontrer de \n. Si c’est le cas, cela signifie qu’il n’y a plus de contenu restant pour le prochain appel, et ft_cut_reste retourne NULL pour signaler que la lecture est terminée.
+    if (str[i] == '\0')
     {
         free(str);
         return (NULL);
     }
-    len = i + 2;
-    result = (char *)malloc(len);
+    result = (char *)malloc(ft_strlen(str) - i);
     if (!result)
         return (NULL);
-    i = -1;
-    while (++i < len)
-        result[i] = str[i];
-    result[i] = '\0';
+    i++;
+    while (str[i])
+        result[j++] = str[i++];
+    result[j] = '\0';
     free(str);
-    return (result);   
+    return (result);
 }
 
 char *ft_cut_line(char *str)
@@ -67,28 +67,28 @@ char    *free_join(char *reserve, char *buf)
     return (temp);
 }
 
-char    *ft_lecteur(int fd)
+char    *ft_lecteur(int fd, char *reserve)
 {
-    char    *buffer_als;
+    // char    *buffer_als;
     int     nbr;
     char    buf[BUF_SIZE];
 
-    buffer_als = ft_strdup("");
+    if (!reserve)
+        reserve = ft_strdup("");
     while ((nbr = read(fd, buf, BUF_SIZE )) > 0)
     {
         buf[nbr] = '\0';
-        buffer_als = free_join(buffer_als, buf);
-        // printf("\n\n\n[%p\n]\n\n\n",buffer_als);
+        reserve = free_join(reserve, buf);
         if (ft_strchr(buf, '\n'))
             break;
     }
-    if (nbr < 0 || (!nbr && !*buffer_als))
+    if (nbr < 0 || (!nbr && !*reserve))
     {
-        free(buffer_als);
-        buffer_als = NULL;
+        free(reserve);
+        reserve = NULL;
         return (NULL);
     }
-    return (buffer_als);
+    return (reserve);
 }
 
 
@@ -99,11 +99,14 @@ char *ft_get_next_line(int fd)
 
     if (BUF_SIZE <= 0 || fd < 0)
         return (NULL);
-    reserve = ft_lecteur(fd);
+    reserve = ft_lecteur(fd,reserve);
     if (!reserve)
         return (NULL);
+    
+    // printf("|->reserve:%s<<<<<-\n",reserve);
     line = ft_cut_line(reserve);
     reserve = ft_cut_reste(reserve);
+    printf("->>>>>>>line : %s<-\n",reserve);
     return (line);
 }
 
@@ -125,11 +128,14 @@ int main()
     // char *line_2 = ft_get_next_line(fd);
     // char *line_3 = ft_get_next_line(fd);
     // char *line_4 = ft_get_next_line(fd);
-    // printf("Ligne %d : %s", ++i,  line_1);
-    // printf("Ligne %d : %s", ++i,  line_2);
-    // printf("Ligne %d : %s", ++i,  line_3);
-    // printf("Ligne %d : %s", ++i,  line_4);
-    free(line_1);
+    // char *line_5 = ft_get_next_line(fd);
+    // char *line_6 = ft_get_next_line(fd);
+    // printf("Ligne %d :%s", ++i,  line_1);
+    // printf("Ligne %d :%s", ++i,  line_2);
+    // printf("Ligne %d :%s", ++i,  line_3);
+    // printf("Ligne %d :%s", ++i,  line_4);
+    // printf("Ligne %d :%s", ++i,  line_5);
+    // free(line_1);
     // free(line_2);
     // free(line_3);
     // free(line_4);
