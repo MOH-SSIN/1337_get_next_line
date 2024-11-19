@@ -69,7 +69,6 @@ char    *free_join(char *reserve, char *buf)
 
 char    *ft_lecteur(int fd, char *reserve)
 {
-    // char    *buffer_als;
     int     nbr;
     char    buf[BUF_SIZE];
 
