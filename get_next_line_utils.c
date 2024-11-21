@@ -22,6 +22,33 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*p;
+
+	i = 0;
+	p = (char *)s;
+	while (i < n)
+	{
+		p[i] = 0;
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	if (size != 0 && count > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, size * count);
+	return (ptr);
+}
+
 char *ft_strdup(const char *s)
 {
     char    *ptr;
