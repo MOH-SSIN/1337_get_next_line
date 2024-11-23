@@ -9,7 +9,7 @@
 #define BUF_SIZE 10000000
 #endif
 #define FILE_D_MAX 100
-static char *reserve[FILE_D_MAX];//
+static char *reserve[FILE_D_MAX];
 
 char	*get_next_line(int fd);
 size_t  ft_strlen(const char *str);
