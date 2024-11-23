@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:56:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/23 15:56:27 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:56:17 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char    *ft_lecteur(int fd, char *reserve)
 }
 
 
-char *ft_get_next_line(int fd)
+char *get_next_line(int fd)
 {
     static char    *reserve;
     char           *line;
