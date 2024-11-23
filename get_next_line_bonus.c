@@ -8,7 +8,8 @@ char *ft_cut_reste(char *str) {
 
     while (str[i] && str[i] != '\n')
         i++;
-    if (str[i] == '\0') {
+    if (str[i] == '\0') 
+    {
         free(str);
         return NULL;
     }
