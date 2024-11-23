@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:56:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/23 21:40:33 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:43:11 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,38 +115,28 @@ char *get_next_line(int fd)
     return (line);
 }
 
-// void mh()
-// {
-//     system("leaks a.out");
-// }
+void mh()
+{
+    system("leaks a.out");
+}
 
-// int main()
-// {
-//     int fd_1 = open("mohcine.txt", O_RDONLY);
-//     if (fd_1 == -1)
-//     {
-//         printf("erreur\n");
-//         return (1);
-//     }
-//     // int fd_2 = open("yaser.txt", O_RDONLY);
-//     // if (fd_2 == -1)
-//     // {
-//     //     printf("erreur\n");
-//     //     return (1);
-//     // }
-//     int i = 0;
-//     char *line_1 = get_next_line(fd_1);
-//     char *line_2 = get_next_line(fd_1);
-//     // char *line_3 = get_next_line(fd_2);
-//     // char *line_4 = get_next_line(fd_2);
-//     // char *line_5 = get_next_line(fd_2);
-//     printf("Ligne %d :%s", ++i,  line_1);
-//     printf("Ligne %d :%s", ++i,  line_2);
-//     printf("\n**************************\n");
-//     free(line_1);
-//     free(line_2);
-//     close(fd_1);
-//     // close(fd_2);
-//     atexit(mh);
-//     return (0);
-// }
+int main()
+{
+    int fd_1 = open("mohcine.txt", O_RDONLY);
+    if (fd_1 == -1)
+    {
+        printf("erreur\n");
+        return (1);
+    }
+    int i = 0;
+    char *line_1 = get_next_line(fd_1);
+    char *line_2 = get_next_line(fd_1);
+    printf("Ligne %d :%s", ++i,  line_1);
+    printf("Ligne %d :%s", ++i,  line_2);
+    printf("\n**************************\n");
+    free(line_1);
+    free(line_2);
+    close(fd_1);
+    atexit(mh);
+    return (0);
+}
