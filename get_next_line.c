@@ -120,29 +120,30 @@ void mh()
 
 int main()
 {
-    int fd = open("mohcine.txt", O_RDONLY);
-    if (fd == -1)
+    int fd_1 = open("mohcine.txt", O_RDONLY);
+    if (fd_1 == -1)
+    {
+        printf("erreur\n");
+        return (1);
+    }
+    int fd_2 = open("yaser.txt", O_RDONLY);
+    if (fd_2 == -1)
     {
         printf("erreur\n");
         return (1);
     }
     int i = 0;
-    char *line_1 = ft_get_next_line(fd);
-    char *line_2 = ft_get_next_line(fd);
-    // char *line_3 = ft_get_next_line(fd);
-    // char *line_4 = ft_get_next_line(fd);
-    // char *line_5 = ft_get_next_line(fd);
-    // char *line_6 = ft_get_next_line(fd);
+    char *line_1 = ft_get_next_line(fd_1);
+    char *line_2 = ft_get_next_line(fd_2);
+    // char *line_3 = ft_get_next_line(fd_2);
+    // char *line_4 = ft_get_next_line(fd_2);
+    // char *line_5 = ft_get_next_line(fd_2);
     printf("Ligne %d :%s", ++i,  line_1);
     printf("Ligne %d :%s", ++i,  line_2);
-    // printf("Ligne %d :%s", ++i,  line_3);
-    // printf("Ligne %d :%s", ++i,  line_4);
-    // printf("Ligne %d :%s", ++i,  line_5);
     free(line_1);
     free(line_2);
-    // free(line_3);
-    // free(line_4);
-    close(fd);
+    close(fd_1);
+    close(fd_2);
     atexit(mh);
     return (0);
 }
