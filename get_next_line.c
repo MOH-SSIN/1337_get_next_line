@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:56:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/23 16:56:17 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:40:33 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char *ft_cut_line(char *str)
     while (++i < len)
         result[i] = str[i];
     result[i] = '\0';
+    // free(str);
     return (result);
 }
 
@@ -89,6 +90,7 @@ char    *ft_lecteur(int fd, char *reserve)
     if (nbr < 0 || (!nbr && !*reserve))
     {
         free(reserve);
+        free(buf);
         reserve = NULL;
         return (NULL);
     }
@@ -126,24 +128,25 @@ char *get_next_line(int fd)
 //         printf("erreur\n");
 //         return (1);
 //     }
-//     int fd_2 = open("yaser.txt", O_RDONLY);
-//     if (fd_2 == -1)
-//     {
-//         printf("erreur\n");
-//         return (1);
-//     }
+//     // int fd_2 = open("yaser.txt", O_RDONLY);
+//     // if (fd_2 == -1)
+//     // {
+//     //     printf("erreur\n");
+//     //     return (1);
+//     // }
 //     int i = 0;
-//     char *line_1 = ft_get_next_line(fd_1);
-//     char *line_2 = ft_get_next_line(fd_2);
-//     // char *line_3 = ft_get_next_line(fd_2);
-//     // char *line_4 = ft_get_next_line(fd_2);
-//     // char *line_5 = ft_get_next_line(fd_2);
+//     char *line_1 = get_next_line(fd_1);
+//     char *line_2 = get_next_line(fd_1);
+//     // char *line_3 = get_next_line(fd_2);
+//     // char *line_4 = get_next_line(fd_2);
+//     // char *line_5 = get_next_line(fd_2);
 //     printf("Ligne %d :%s", ++i,  line_1);
 //     printf("Ligne %d :%s", ++i,  line_2);
+//     printf("\n**************************\n");
 //     free(line_1);
 //     free(line_2);
 //     close(fd_1);
-//     close(fd_2);
+//     // close(fd_2);
 //     atexit(mh);
 //     return (0);
 // }

@@ -91,30 +91,30 @@ char *ft_get_next_line(int fd) {
     return line;
 }
 
-void mh() {
-    system("leaks a.out");
-}
+// void mh() {
+//     system("leaks a.out");
+// }
 
-int main() {
-    int fd_1 = open("mohcine.txt", O_RDONLY);
-    if (fd_1 == -1) {
-        printf("erreur\n");
-        return 1;
-    }
-    int fd_2 = open("yaser.txt", O_RDONLY);
-    if (fd_2 == -1) {
-        printf("erreur\n");
-        return 1;
-    }
+// int main() {
+//     int fd_1 = open("mohcine.txt", O_RDONLY);
+//     if (fd_1 == -1) {
+//         printf("erreur\n");
+//         return 1;
+//     }
+//     int fd_2 = open("yaser.txt", O_RDONLY);
+//     if (fd_2 == -1) {
+//         printf("erreur\n");
+//         return 1;
+//     }
 
-    char *line_1 = ft_get_next_line(fd_1);
-    char *line_2 = ft_get_next_line(fd_2);
-    printf("Ligne 1 :%s", line_1);
-    printf("Ligne 2 :%s", line_2);
-    free(line_1);
-    free(line_2);
-    close(fd_1);
-    close(fd_2);
-    atexit(mh);
-    return 0;
-}
+//     char *line_1 = ft_get_next_line(fd_1);
+//     char *line_2 = ft_get_next_line(fd_2);
+//     printf("Ligne 1 :%s", line_1);
+//     printf("Ligne 2 :%s", line_2);
+//     free(line_1);
+//     free(line_2);
+//     close(fd_1);
+//     close(fd_2);
+//     atexit(mh);
+//     return 0;
+// }
