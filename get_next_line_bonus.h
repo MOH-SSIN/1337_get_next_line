@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#ifndef BUF_SIZE
-#define BUF_SIZE 10000000
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 10000000
 #endif
 #define FILE_D_MAX 100
 static char *reserve[FILE_D_MAX];

@@ -18,8 +18,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 // #define BUF_SIZE 0
-#ifndef BUF_SIZE
-#define BUF_SIZE 10000000
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 10000000
 #endif
 
 char	*get_next_line(int fd);

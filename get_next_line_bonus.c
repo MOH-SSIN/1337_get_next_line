@@ -57,8 +57,8 @@ char *ft_lecteur(int fd, char *reserve) {
 
     if (!reserve)
         reserve = ft_strdup("");
-    buf = ft_calloc(BUF_SIZE + 1, sizeof(char));
-    while ((nbr = read(fd, buf, BUF_SIZE)) > 0) {
+    buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+    while ((nbr = read(fd, buf, BUFFER_SIZE)) > 0) {
         buf[nbr] = '\0';
         reserve = free_join(reserve, buf);
         if (ft_strchr(buf, '\n'))
@@ -72,12 +72,11 @@ char *ft_lecteur(int fd, char *reserve) {
     return reserve;
 }
 
-char *ft_get_next_line(int fd) {
+char *get_next_line(int fd) {
     char *line;
 
-    if (BUF_SIZE <= 0 || fd < 0 || fd >= FILE_D_MAX)
+    if (BUFFER_SIZE <= 0 || fd < 0 || fd >= FILE_D_MAX)
         return NULL;
-
     reserve[fd] = ft_lecteur(fd, reserve[fd]);
     if (!reserve[fd])
         return NULL;

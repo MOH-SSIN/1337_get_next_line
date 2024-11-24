@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:56:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/23 21:44:40 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:56:17 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char *ft_cut_reste(char *str)
     //donc len = 17 - 10 => 7(hadi raj fiha case dyal '\0' dak ch 3lach mdrnach + 1)
     result = (char *)malloc(ft_strlen(str) - i);
     if (!result)
+    {
+        free(result);
         return (NULL);
+    }
     i++;
     while (str[i])
         result[j++] = str[i++];
@@ -59,7 +62,6 @@ char *ft_cut_line(char *str)
     while (++i < len)
         result[i] = str[i];
     result[i] = '\0';
-    // free(str);
     return (result);
 }
 
@@ -79,8 +81,11 @@ char    *ft_lecteur(int fd, char *reserve)
     //ona inistalier hde resrve b une cahine vide pour eviter segmentaion fault f2awale dkhla 
     if (!reserve)
         reserve = ft_strdup("");// n9dro ndiro ft_caloc(1,1) nfse haja
-    buf = ft_calloc(BUF_SIZE + 1, sizeof(char));
-    while ((nbr = read(fd, buf, BUF_SIZE)) > 0)
+    // buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+    buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+    if (!buf)
+        return (NULL);
+    while ((nbr = read(fd, buf, BUFFER_SIZE)) > 0)
     {
         buf[nbr] = '\0';
         reserve = free_join(reserve, buf);
@@ -96,18 +101,18 @@ char    *ft_lecteur(int fd, char *reserve)
     }
     // hna kan freyiw bfre 7ite toujour kt7te fihe valeure 5ra donc pour eviter leaks
     free(buf);
+    // printf("{%p}\n", buf);
     return (reserve);
 }
-
 
 char *get_next_line(int fd)
 {
     static char    *reserve;
     char           *line;
 
-    if (BUF_SIZE <= 0 || fd < 0)
+    if (BUFFER_SIZE <= 0 || fd < 0)
         return (NULL);
-    reserve = ft_lecteur(fd,reserve);
+    reserve = ft_lecteur(fd, reserve);
     if (!reserve)
         return (NULL);
     line = ft_cut_line(reserve);
@@ -123,20 +128,19 @@ char *get_next_line(int fd)
 // int main()
 // {
 //     int fd_1 = open("mohcine.txt", O_RDONLY);
-//     if (fd_1 == -1)
+//     char *line_1;
+//     while (1)
 //     {
-//         printf("erreur\n");
-//         return (1);
+//         line_1 = get_next_line(fd_1);
+//         printf("%s", line_1);
+//         if (!line_1)
+//         {
+//             free(line_1);
+//             break ;
+//         }
+//         free(line_1);
 //     }
-//     int i = 0;
-//     char *line_1 = get_next_line(fd_1);
-//     char *line_2 = get_next_line(fd_1);
-//     printf("Ligne %d :%s", ++i,  line_1);
-//     printf("Ligne %d :%s", ++i,  line_2);
-//     printf("\n**************************\n");
-//     free(line_1);
-//     free(line_2);
 //     close(fd_1);
 //     atexit(mh);
 //     return (0);
-}
+// }
