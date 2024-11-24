@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:56:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/24 12:35:08 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/24 14:33:37 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,25 +109,3 @@ char	*get_next_line(int fd)
 	reserve = ft_cut_reste(reserve);
 	return (line);
 }
-// // void mh() {
-// //     system("leaks a.out");
-// // }
-
-// #include <stdio.h>
-// #include <unistd.h>
-// int main(int ac, char **av)
-// {
-// 	char *line;
-// 	// int fd = open(av[2], O_RDONLY);
-
-// 	line = get_next_line(0);
-// 	while(line)
-// 	{
-// 		printf("-->%s", line);
-// 		free(line);
-// 		line = get_next_line(0);
-// 		// sleep(1);
-// 	}
-// 	printf("\nhhh");
-// 	// atexit(mh);
-// }
