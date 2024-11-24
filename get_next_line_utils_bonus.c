@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/24 11:59:53 by mez-zahi          #+#    #+#             */
+/*   Updated: 2024/11/24 13:09:31 by mez-zahi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
@@ -10,48 +22,30 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_free(char *ptr1, char *ptr2)
 {
+	free(ptr1);
+	free(ptr2);
+	ptr1 = NULL;
+	ptr2 = NULL;
+	return (NULL);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*ptr;
 	size_t	i;
-	char	*p;
+	size_t	size;
 
-	i = 0;
-	p = (char *)s;
-	while (i < n)
-	{
-		p[i] = 0;
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	if (size != 0 && count > SIZE_MAX / size)
+	i = -1;
+	size = ft_strlen(s);
+	ptr = (char *)malloc(size + 1);
+	if (!ptr)
 		return (NULL);
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, size * count);
+	while (++i < size)
+		ptr[i] = s[i];
+	ptr[i] = '\0';
 	return (ptr);
-}
-
-char *ft_strdup(const char *s)
-{
-    char    *ptr;
-    size_t  i;
-    size_t  size;
-
-    i = -1;
-    size = ft_strlen(s);
-    ptr = (char *)malloc(size + 1);
-    if(!ptr)
-        return(NULL);
-    while(++i < size)
-        ptr[i] = s[i];
-    ptr[i] = '\0';
-    return(ptr);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -90,5 +84,5 @@ char	*ft_strchr(const char *s, int c)
 			return (0);
 		s++;
 	}
-	return (( char *)s);
+	return ((char *)s);
 }
