@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:59:41 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/24 14:31:37 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:42:26 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*reserve[FILE_D_MAX];
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= FILE_D_MAX)
+	if ((BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX) || fd < 0)
 		return (NULL);
 	reserve[fd] = ft_lecteur(fd, reserve[fd]);
 	if (!reserve[fd])

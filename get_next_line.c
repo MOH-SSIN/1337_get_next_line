@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:56:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/24 14:33:37 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:41:59 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	static char	*reserve;
 	char		*line;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if ((BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX) || fd < 0)
 		return (NULL);
 	reserve = ft_lecteur(fd, reserve);
 	if (!reserve)
