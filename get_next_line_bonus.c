@@ -100,7 +100,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*reserve[FILE_D_MAX];
 
-	if ((BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX) || fd < 0)
+	if ((BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX)
+		|| fd < 0 || fd >= FILE_D_MAX)
 		return (NULL);
 	reserve[fd] = ft_lecteur(fd, reserve[fd]);
 	if (!reserve[fd])
