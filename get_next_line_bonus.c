@@ -50,7 +50,10 @@ char	*ft_cut_line(char *str)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	len = i + 1;
+	if (!str[i])
+		len = i;
+	else
+		len = i + 1;
 	result = (char *)malloc(len + 1);
 	if (!result)
 		return (NULL);
