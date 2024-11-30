@@ -101,10 +101,10 @@ char	*ft_lecteur(int fd, char *reserve)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*reserve[FILE_D_MAX];
+	static char	*reserve[OPEN_MAX];
 
 	if ((BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX)
-		|| fd < 0 || fd >= FILE_D_MAX)
+		|| fd < 0 || fd >= OPEN_MAX)
 		return (NULL);
 	reserve[fd] = ft_lecteur(fd, reserve[fd]);
 	if (!reserve[fd])
