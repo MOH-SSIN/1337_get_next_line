@@ -21,7 +21,6 @@
 #  define BUFFER_SIZE 10000000
 # endif
 
-
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
