@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:59:41 by mez-zahi          #+#    #+#             */
-/*   Updated: 2024/11/27 15:42:26 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:50:06 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ char	*ft_lecteur(int fd, char *reserve)
 
 	if (!reserve)
 		reserve = ft_strdup("");
+	if (!reserve)
+		return (NULL);
 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (NULL);
